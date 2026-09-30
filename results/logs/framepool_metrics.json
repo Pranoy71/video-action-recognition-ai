@@ -1,0 +1,86 @@
+{
+  "run_name": "framepool",
+  "model": "framepool",
+  "num_classes": 10,
+  "classes": [
+    "ApplyEyeMakeup",
+    "ApplyLipstick",
+    "Archery",
+    "BabyCrawling",
+    "BalanceBeam",
+    "BandMarching",
+    "BaseballPitch",
+    "Basketball",
+    "BasketballDunk",
+    "BenchPress"
+  ],
+  "test": {
+    "top1": 0.84,
+    "top5": 0.9866666793823242,
+    "macro_f1": 0.8153235653235654,
+    "n": 75
+  },
+  "best_val_top1": 0.8999999761581421,
+  "efficiency": {
+    "params_total": 11181642,
+    "params_trainable": 11181642,
+    "params_trainable_head": 5130,
+    "macs_per_clip": 7798060032.0,
+    "weights_mb": 44.812747,
+    "cpu": {
+      "clips_per_sec": 10.0,
+      "ms_per_clip": 100.001,
+      "batch": 4,
+      "iters": 10,
+      "device": "cpu"
+    },
+    "gpu": null
+  },
+  "top_confused_pairs": [
+    {
+      "true": "ApplyEyeMakeup",
+      "pred": "ApplyLipstick",
+      "count": 4
+    },
+    {
+      "true": "Basketball",
+      "pred": "BaseballPitch",
+      "count": 2
+    },
+    {
+      "true": "Archery",
+      "pred": "BenchPress",
+      "count": 2
+    },
+    {
+      "true": "Basketball",
+      "pred": "Archery",
+      "count": 1
+    },
+    {
+      "true": "BaseballPitch",
+      "pred": "BasketballDunk",
+      "count": 1
+    },
+    {
+      "true": "BalanceBeam",
+      "pred": "Archery",
+      "count": 1
+    },
+    {
+      "true": "Basketball",
+      "pred": "BenchPress",
+      "count": 1
+    }
+  ],
+  "decode_failures_test": [],
+  "env": {
+    "python": "3.12.14",
+    "torch": "2.14.0+cpu",
+    "torchvision": "0.29.0+cpu",
+    "device": "cpu",
+    "gpu_name": null,
+    "cuda_version": null,
+    "os": "Linux-5.10.134-013.15.kangaroo.al8.x86_64-x86_64-with-glibc2.41"
+  }
+}

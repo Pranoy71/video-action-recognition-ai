@@ -1,0 +1,29 @@
+# Model C — Kinetics-400-pretrained r3d_18, end-to-end fine-tuned.
+# The 3D-CNN representative: joint spatiotemporal features vs frozen 2D
+# appearance features (A/B).
+run_name: r3d18
+seed: 42
+out_dir: results
+
+model:
+  name: r3d18
+  pretrained: true
+  input_kind: video
+
+data:
+  data_dir: data
+  num_frames: 16
+  spatial_size: 112            # r3d_18's native Kinetics input resolution
+  norm: kinetics               # torchvision's Kinetics normalisation stats
+  workers: 4
+
+training:
+  epochs: 15
+  batch_size: 16               # fits a free-tier T4 with AMP
+  optimizer: sgd
+  lr: 0.01                     # head LR; backbone gets lr * backbone_lr_scale
+  backbone_lr_scale: 0.1       # differential LR: pretrained body moves slowly
+  momentum: 0.9
+  weight_decay: 0.0001
+  label_smoothing: 0.1
+  amp: true                    # mixed precision on CUDA

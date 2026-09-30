@@ -1,0 +1,20 @@
+# Data (downloaded by src/data/download_ucf101.py — never committed)
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Experiment artifacts (keep plots + summaries, ignore bulky checkpoints)
+results/checkpoints/
+results/quantized/
+results/_size_tmp.pt
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

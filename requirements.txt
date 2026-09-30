@@ -1,0 +1,14 @@
+# Pinned to the environment the reported numbers were produced in.
+# GPU runs (Colab) use the same versions; AMP kicks in automatically on CUDA.
+torch>=2.2
+torchvision>=0.17
+av>=11.0            # video decode (PyAV) — explicit, version-proof pipeline
+numpy>=1.24
+matplotlib>=3.7
+PyYAML>=6.0
+tqdm>=4.65
+thop>=0.1.1         # MACs profiling (soft dep: bench degrades gracefully)
+onnx>=1.15          # export
+onnxruntime>=1.17   # fp32 + INT8 inference & speedup measurement
+onnxscript>=0.1     # torch.onnx exporter backend (torch >= 2.4)
+pytest>=8.0

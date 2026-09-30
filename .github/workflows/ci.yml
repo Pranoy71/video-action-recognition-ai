@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Unit + end-to-end tests (synthetic data, CPU)
+        run: pytest -q
+
+      - name: Smoke training run (documented pipeline, 3 batches)
+        run: |
+          python - <<'EOF'
+          # Generate a tiny synthetic dataset and exercise the real CLI path.
+          from pathlib import Path
+          import sys
+          sys.path.insert(0, "tests")
+          from conftest import make_synthetic_dataset
+          make_synthetic_dataset(Path("data"))
+          import json
+          (Path("data") / "meta.json").parent.mkdir(exist_ok=True)
+          json.dump({"source": "synthetic-ci"}, open(Path("data") / "meta.json", "w"))
+          EOF
+          python -m src.data.extract_features --data-dir data \
+            --out-dir data/features_resnet18 --num-frames 8 --batch-size 4 --workers 0
+          python -m src.train --config configs/framepool.yaml \
+            --data-dir data --epochs 1 --batch-size 4

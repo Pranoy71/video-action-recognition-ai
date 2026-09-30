@@ -1,0 +1,21 @@
+# Model A — "bag of frames" floor: mean pooling over frozen ResNet-18 features.
+# Trainable params: one Linear (512 -> num_classes).
+run_name: framepool
+seed: 42
+out_dir: results
+
+model:
+  name: framepool
+  input_kind: feature          # consumes cached ResNet-18 features
+
+data:
+  data_dir: data
+  features_dir: features_resnet18
+
+training:
+  epochs: 30                   # cheap on cached features; same budget as model B
+  batch_size: 64
+  optimizer: adam
+  lr: 0.001
+  weight_decay: 0.0001
+  label_smoothing: 0.1         # light regularisation for a near-linear model

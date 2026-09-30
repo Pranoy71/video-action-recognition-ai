@@ -1,0 +1,38 @@
+{
+  "model": "r3d18",
+  "run_name": "r3d18",
+  "onnx_parity_max_diff": 1.0728836059570312e-06,
+  "accuracy": {
+    "fp32_top1": 0.9866666666666667,
+    "int8_top1": 0.9866666666666667,
+    "n_test": 75,
+    "delta": 0.0
+  },
+  "cpu_latency_sec_per_clip": {
+    "batch1": {
+      "pytorch_eager": 0.4378,
+      "onnx_fp32": 0.5643,
+      "onnx_int8": 0.1963
+    },
+    "batch8": {
+      "pytorch_eager": 0.3654,
+      "onnx_fp32": 0.5442,
+      "onnx_int8": 0.1929
+    }
+  },
+  "speedup_int8_vs_eager_b1": 2.23,
+  "speedup_int8_vs_onnxfp32_b1": 2.87,
+  "file_sizes_mb": {
+    "fp32_mb": 132.7,
+    "int8_mb": 33.3
+  },
+  "env": {
+    "python": "3.12.14",
+    "torch": "2.14.0+cpu",
+    "torchvision": "0.29.0+cpu",
+    "device": "cpu",
+    "gpu_name": null,
+    "cuda_version": null,
+    "os": "Linux-5.10.134-013.15.kangaroo.al8.x86_64-x86_64-with-glibc2.41"
+  }
+}

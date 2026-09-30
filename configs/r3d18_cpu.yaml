@@ -1,0 +1,30 @@
+# Model C — low-resource CPU profile.
+# This is the exact profile that produced the numbers in the README
+# (4 GB RAM / 2 CPU cores, batch 4, ~35-40 min for 10 epochs on 300 clips).
+# The GPU profile (r3d18.yaml) is the default for Colab.
+run_name: r3d18
+seed: 42
+out_dir: results
+
+model:
+  name: r3d18
+  pretrained: true
+  input_kind: video
+
+data:
+  data_dir: data
+  num_frames: 16
+  spatial_size: 112
+  norm: kinetics
+  workers: 0               # no worker processes: fits small RAM
+
+training:
+  epochs: 10
+  batch_size: 4
+  optimizer: sgd
+  lr: 0.01
+  backbone_lr_scale: 0.1
+  momentum: 0.9
+  weight_decay: 0.0001
+  label_smoothing: 0.1
+  amp: false               # CPU: no mixed precision

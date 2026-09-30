@@ -1,0 +1,27 @@
+# Model B — temporal Transformer encoder over the SAME frozen ResNet-18
+# features as model A (isolates learned temporal contextualization).
+run_name: temporal_transformer
+seed: 42
+out_dir: results
+
+model:
+  name: temporal_transformer
+  input_kind: feature
+  in_dim: 512
+  d_model: 256
+  nhead: 8
+  num_layers: 2
+  dim_feedforward: 512
+  dropout: 0.1
+
+data:
+  data_dir: data
+  features_dir: features_resnet18
+
+training:
+  epochs: 30                   # identical budget to model A (fairness)
+  batch_size: 64
+  optimizer: adam              # Adam is the conventional choice for transformers
+  lr: 0.0003
+  weight_decay: 0.0001
+  label_smoothing: 0.1

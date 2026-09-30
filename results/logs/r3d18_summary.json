@@ -1,0 +1,17 @@
+{
+  "run_name": "r3d18",
+  "best_val_top1": 1.0,
+  "epochs": 10,
+  "train_minutes": 6.71,
+  "params_total": 33171402,
+  "params_trainable": 33171402,
+  "env": {
+    "python": "3.12.14",
+    "torch": "2.14.0+cpu",
+    "torchvision": "0.29.0+cpu",
+    "device": "cpu",
+    "gpu_name": null,
+    "cuda_version": null,
+    "os": "Linux-5.10.134-013.15.kangaroo.al8.x86_64-x86_64-with-glibc2.41"
+  }
+}

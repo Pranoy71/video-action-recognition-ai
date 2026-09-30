@@ -1,0 +1,17 @@
+{
+  "run_name": "temporal_transformer",
+  "best_val_top1": 0.8999999761581421,
+  "epochs": 30,
+  "train_minutes": 0.32,
+  "params_total": 1205002,
+  "params_trainable": 1205002,
+  "env": {
+    "python": "3.12.14",
+    "torch": "2.14.0+cpu",
+    "torchvision": "0.29.0+cpu",
+    "device": "cpu",
+    "gpu_name": null,
+    "cuda_version": null,
+    "os": "Linux-5.10.134-013.15.kangaroo.al8.x86_64-x86_64-with-glibc2.41"
+  }
+}

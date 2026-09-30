@@ -1,0 +1,56 @@
+{
+  "run_name": "r3d18",
+  "model": "r3d18",
+  "num_classes": 10,
+  "classes": [
+    "ApplyEyeMakeup",
+    "ApplyLipstick",
+    "Archery",
+    "BabyCrawling",
+    "BalanceBeam",
+    "BandMarching",
+    "BaseballPitch",
+    "Basketball",
+    "BasketballDunk",
+    "BenchPress"
+  ],
+  "test": {
+    "top1": 0.9866666666666667,
+    "top5": 1.0,
+    "macro_f1": 0.9797979797979798,
+    "n": 75
+  },
+  "best_val_top1": 1.0,
+  "efficiency": {
+    "params_total": 33171402,
+    "params_trainable": 33171402,
+    "params_trainable_head": 33171402,
+    "macs_per_clip": 1591437824.0,
+    "weights_mb": 132.782027,
+    "cpu": {
+      "clips_per_sec": 2.738,
+      "ms_per_clip": 365.239,
+      "batch": 4,
+      "iters": 10,
+      "device": "cpu"
+    },
+    "gpu": null
+  },
+  "top_confused_pairs": [
+    {
+      "true": "ApplyEyeMakeup",
+      "pred": "ApplyLipstick",
+      "count": 1
+    }
+  ],
+  "decode_failures_test": [],
+  "env": {
+    "python": "3.12.14",
+    "torch": "2.14.0+cpu",
+    "torchvision": "0.29.0+cpu",
+    "device": "cpu",
+    "gpu_name": null,
+    "cuda_version": null,
+    "os": "Linux-5.10.134-013.15.kangaroo.al8.x86_64-x86_64-with-glibc2.41"
+  }
+}
